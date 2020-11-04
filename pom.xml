@@ -7,10 +7,6 @@
     <groupId>pro.chenggang</groupId>
     <artifactId>exclusive-toolkit</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <modules>
-        <module>mybatis-generator-extension</module>
-        <module>common-support</module>
-    </modules>
     <packaging>pom</packaging>
 
     <name>exclusive-toolkit</name>
@@ -39,6 +35,14 @@
             <url>https://blog.chenggang.pro</url>
         </developer>
     </developers>
+
+    <modules>
+        <module>mybatis-generator-extension</module>
+        <module>common-support</module>
+        <module>spring-boot-support</module>
+        <module>spring-boot-web-support</module>
+        <module>spring-cloud-support</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
