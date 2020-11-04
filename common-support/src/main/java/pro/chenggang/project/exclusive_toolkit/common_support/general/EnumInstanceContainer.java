@@ -2,7 +2,6 @@ package pro.chenggang.project.exclusive_toolkit.common_support.general;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
-import pro.chenggang.project.exclusive_toolkit.common_support.option.StringPool;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -12,6 +11,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static pro.chenggang.project.exclusive_toolkit.common_support.option.StringPool.AT;
+import static pro.chenggang.project.exclusive_toolkit.common_support.option.StringPool.NULL;
+
 /**
  * @author: chenggang
  * @date 2020-10-21.
@@ -19,7 +21,7 @@ import java.util.stream.Stream;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 class EnumInstanceContainer {
 
-    static final String NULL_PLACEHOLDER = StringPool.AT + StringPool.NULL + StringPool.AT;
+    static final String NULL_PLACEHOLDER = AT + NULL + AT;
 
     private final ConcurrentHashMap<Class<? extends Enum>, Map<String, Map<Object,List<Enum>>>> enumContainer = new ConcurrentHashMap<>();
 
