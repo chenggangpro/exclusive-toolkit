@@ -39,6 +39,12 @@ public class EnumTests {
 
     }
 
+    @Test
+    public void testWithFieldIndex(){
+        Optional<DemoEnum> optionalDemoEnum= EnumInstanceHolder.getEnum(DemoEnum.class, 1, 1);
+        assertThat(optionalDemoEnum.isPresent(), Matchers.is(true));
+    }
+
     @Getter
     @AllArgsConstructor
     enum DemoEnum2 {
@@ -52,6 +58,12 @@ public class EnumTests {
         @EnumField
         private Integer status;
 
+    }
+
+    @Test
+    public void testOneEnumSupport(){
+        Optional<DemoEnum2> optionalDemoEnum= EnumInstanceHolder.getEnum(DemoEnum2.class, 1);
+        assertThat(optionalDemoEnum.isPresent(), Matchers.is(true));
     }
 
     @Test
@@ -75,11 +87,7 @@ public class EnumTests {
         countDownLatch.await();
     }
 
-    @Test
-    public void testOneEnumSupport(){
-        Optional<DemoEnum2> optionalDemoEnum= EnumInstanceHolder.getEnum(DemoEnum2.class, 1);
-        assertThat(optionalDemoEnum.isPresent(), Matchers.is(true));
-    }
+
 
     @Test
     public void threadTestOneEnumSupport() throws Exception{
@@ -96,11 +104,7 @@ public class EnumTests {
         countDownLatch.await();
     }
 
-    @Test
-    public void testWithFieldIndex(){
-        Optional<DemoEnum> optionalDemoEnum= EnumInstanceHolder.getEnum(DemoEnum.class, 1, 1);
-        assertThat(optionalDemoEnum.isPresent(), Matchers.is(true));
-    }
+
 
     @Test
     public void threadTestWithFieldIndex() throws Exception{

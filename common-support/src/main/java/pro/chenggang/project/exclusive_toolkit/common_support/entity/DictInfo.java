@@ -15,9 +15,10 @@ import lombok.experimental.Accessors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class DictInfo<T> {
+public class DictInfo<T,E> {
 
     private String display;
     private T value;
+    private E extraData;
 
 }
