@@ -1,5 +1,7 @@
 package pro.chenggang.project.exclusive_toolkit.common_support.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -11,6 +13,7 @@ import java.util.regex.Pattern;
  * @author: chenggang
  */
 @Slf4j
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ArchitectUtil {
 
     private static final Pattern UNDER_LINE_PATTERN = Pattern.compile("_(\\w)");
@@ -18,22 +21,22 @@ public class ArchitectUtil {
     private static final Pattern CAMEL_PATTERN = Pattern.compile("[A-Z]");
 
     /**
-     * 手机号格式校验正则
+     * phone regex
      */
     public static final String PHONE_REGEX = "^1\\d{10}$";
 
     /**
-     * 手机号脱敏筛选正则
+     * phone blur regex
      */
     public static final String PHONE_BLUR_REGEX = "(\\d{3})\\d{4}(\\d{4})";
 
     /**
-     * 手机号脱敏替换正则
+     * phone blur replace regex
      */
     public static final String PHONE_BLUR_REPLACE_REGEX = "$1****$2";
 
     /**
-     * 下划线转驼峰
+     * underline to camel
      * @param str
      * @return
      */
@@ -55,7 +58,7 @@ public class ArchitectUtil {
 
 
     /**
-     * 驼峰转下划线
+     * camel to underline
      * @param str
      * @return
      */
@@ -76,7 +79,7 @@ public class ArchitectUtil {
     }
 
     /**
-     * 检查手机号格式
+     * check phone
      * @param phone
      * @return
      */
@@ -88,7 +91,7 @@ public class ArchitectUtil {
     }
 
     /**
-     * 手机号加密
+     * encrypt phone
      * @param phone
      * @return
      */
