@@ -5,7 +5,7 @@ import lombok.Getter;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import pro.chenggang.project.exclusive_toolkit.common_support.general.EnumInstanceHolder;
-import pro.chenggang.project.exclusive_toolkit.common_support.general.EnumSupport;
+import pro.chenggang.project.exclusive_toolkit.common_support.general.EnumField;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,9 +32,9 @@ public class EnumTests {
 
         ;
 
-        @EnumSupport
+        @EnumField
         private String displayName;
-        @EnumSupport
+        @EnumField
         private Integer status;
 
     }
@@ -49,7 +49,7 @@ public class EnumTests {
         ;
 
         private String displayName;
-        @EnumSupport
+        @EnumField
         private Integer status;
 
     }

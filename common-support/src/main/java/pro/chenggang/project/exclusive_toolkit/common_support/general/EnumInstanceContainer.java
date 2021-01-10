@@ -51,7 +51,7 @@ class EnumInstanceContainer {
             Enum[] enumConstants = instanceClass.getEnumConstants();
             Field[] declaredFields = instanceClass.getDeclaredFields();
             List<Field> fieldList = Stream.of(declaredFields)
-                    .filter(field -> field.isAnnotationPresent(EnumSupport.class))
+                    .filter(field -> field.isAnnotationPresent(EnumField.class))
                     .peek(field -> field.setAccessible(true))
                     .collect(Collectors.toList());
             Map<String, Map<Object, List<Enum>>> nameResult = fieldList
