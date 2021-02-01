@@ -99,9 +99,21 @@ public class EnumInstanceHolder {
         return (Optional<T>) enumInstances.values()
                 .stream()
                 .filter(enumMap -> enumMap.containsKey(enumValue))
-                .flatMap(enumMap -> enumMap.values().stream())
-                .findFirst()
-                .flatMap(enums -> enums.stream().findFirst());
+                .flatMap(enumMap -> enumMap.get(enumValue).stream())
+                .findFirst();
+    }
+
+    /**
+     * get enum by name
+     * @param enumType
+     * @param name
+     * @param <T>
+     * @return
+     */
+    public static <T extends Enum> Optional<T> getEnumByName(Class<T> enumType,String name){
+        EnumInstanceContainer.getInstance().initEnumInstance(enumType);
+        Map<String, Enum> enumInstances = EnumInstanceContainer.getInstance().getByEnumNameContainerByClass(enumType);
+        return (Optional<T>) Optional.ofNullable(enumInstances.get(name));
     }
 
 }

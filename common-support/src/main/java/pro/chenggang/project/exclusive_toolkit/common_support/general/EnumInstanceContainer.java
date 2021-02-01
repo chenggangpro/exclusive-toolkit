@@ -16,6 +16,7 @@ import java.util.stream.Stream;
 import static pro.chenggang.project.exclusive_toolkit.common_support.option.StringPool.AT;
 import static pro.chenggang.project.exclusive_toolkit.common_support.option.StringPool.NULL;
 
+
 /**
  * @author: chenggang
  * @date 2020-10-21.
@@ -27,6 +28,7 @@ class EnumInstanceContainer {
 
     private final ConcurrentHashMap<Class<? extends Enum>, Map<String, Map<Object,List<Enum>>>> enumFieldNameContainer = new ConcurrentHashMap<>();
     private final ConcurrentHashMap<Class<? extends Enum>, Map<Integer, Map<Object,List<Enum>>>> enumFieldOrderContainer = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Class<? extends Enum>, Map<String,Enum>> enumNameContainer = new ConcurrentHashMap<>();
 
     static EnumInstanceContainer getInstance(){
         return InstanceHolder.INSTANCE;
@@ -38,6 +40,10 @@ class EnumInstanceContainer {
 
     Map<Integer, Map<Object,List<Enum>>> getByEnumFieldOrderContainerByClass(Class<? extends Enum> enumClass){
         return enumFieldOrderContainer.get(enumClass);
+    }
+
+    Map<String,Enum> getByEnumNameContainerByClass(Class<? extends Enum> enumClass){
+        return enumNameContainer.get(enumClass);
     }
 
     void initEnumInstance(Class<? extends Enum> instanceClass){
@@ -100,6 +106,8 @@ class EnumInstanceContainer {
                             HashMap::new
                     ));
             enumFieldOrderContainer.putIfAbsent(instanceClass,ordinalResult);
+            Map<String, Enum> enumNameMap = Stream.of(enumConstants).collect(Collectors.toMap(Enum::name, enumConstant -> enumConstant));
+            enumNameContainer.putIfAbsent(instanceClass,enumNameMap);
         }
     }
 
